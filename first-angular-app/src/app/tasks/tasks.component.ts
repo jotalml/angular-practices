@@ -12,7 +12,7 @@ import { NewTaskComponent } from "./new-task/new-task.component";
 export class TasksComponent {
   @Input({required: true}) userId!:string;
   @Input({required:true}) name!: string;
-  isAddingTask = false;
+  isAddingTask: boolean = false;
 
   get selectedUserTasks() {
     return this.dummyTasks.filter(task => task.userId === this.userId);
@@ -24,6 +24,10 @@ export class TasksComponent {
 
   onStartAddTask() {  
     this.isAddingTask = true;
+  }
+
+  onCancelAddTask(){
+    this.isAddingTask = false;
   }
 
   dummyTasks = [
